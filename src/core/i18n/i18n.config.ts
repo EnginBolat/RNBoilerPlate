@@ -27,7 +27,11 @@ export const initLocalization = (): void => {
     I18n.locale = deviceLocale;
 };
 
-export const translate = (key: TranslationKey, config?: Record<string, any>): string => {
-    const translation = I18n.t(key, config);
-    return translation.includes('missing') ? key : translation;
-};
+export const translate = (key: TranslationKey, ...args: any[]): string => {
+    let translation = I18n.t(key);
+    if (translation.includes('missing')) {return key;}
+    return translation.replace(/{(\d+)}/g, (_, index) => {
+      const value = args[index];
+      return typeof value === 'string' ? I18n.t(value) : `{${index}}`;
+    });
+  };

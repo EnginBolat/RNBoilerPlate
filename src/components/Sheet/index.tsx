@@ -32,7 +32,10 @@ const Sheet = (props: ISheet) => {
 
   const ref = useRef<BottomSheet>(null);
   const [isHaveMaxHeight, setIsHaveMaxHeight] = useState(false);
+
   const safeAreaInsets = initialWindowMetrics?.insets;
+  const windowInsets = initialWindowMetrics?.insets;
+  const styles = rawStyles({bottomInsets: windowInsets?.bottom ?? 0});
 
   const handleLayout = (event: LayoutChangeEvent) => {
     const {height: measuredHeight} = event.nativeEvent.layout;
@@ -60,9 +63,6 @@ const Sheet = (props: ISheet) => {
       ref.current?.close();
     }
   };
-
-  const windowInsets = initialWindowMetrics?.insets;
-  const styles = rawStyles({bottomInsets: windowInsets?.bottom ?? 0});
 
   const sheetViewStyle: ViewStyle = {...sheetStyle};
   const sheetContainerStyle: ViewStyle = {

@@ -4,7 +4,7 @@ export interface IInitialState {
   val: number;
 }
 
-export const initialState: IInitialState = {
+const initialState: IInitialState = {
   val: 0,
 };
 

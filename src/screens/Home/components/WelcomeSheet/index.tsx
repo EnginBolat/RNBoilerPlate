@@ -1,7 +1,7 @@
 import React from 'react';
 import Sheet from '@components/Sheet';
 import {Text} from 'react-native';
-import {useLocalization} from '@providers/LocalizationProvider';
+import {useLocalization} from '@providers/index';
 
 interface IWelcomeSheet {
   onClose: () => void;

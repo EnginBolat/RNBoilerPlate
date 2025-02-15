@@ -1,0 +1,3 @@
+const TIME_FOR_INACTIVITY = 100;
+
+export {TIME_FOR_INACTIVITY};

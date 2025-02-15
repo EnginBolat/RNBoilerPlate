@@ -1,15 +1,31 @@
 import React from 'react';
 import Router from './src/Router';
 
-import {LocalizationProvider} from '@providers/index';
-import CommonProvider from '@providers/CommonProvider';
+import {Provider} from 'react-redux';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
-const App = () => (
-  <CommonProvider>
-    <LocalizationProvider>
-      <Router />
-    </LocalizationProvider>
-  </CommonProvider>
-);
+import {PortalProvider} from '@gorhom/portal';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {store} from '@store/index';
+import {LocalizationProvider} from '@providers/index';
+import {NavigationContainer} from '@react-navigation/native';
+
+const App = () => {
+  return (
+    <Provider store={store}>
+      <GestureHandlerRootView style={{flex: 1}}>
+        <PortalProvider>
+          <BottomSheetModalProvider>
+            <NavigationContainer>
+              <LocalizationProvider>
+                <Router />
+              </LocalizationProvider>
+            </NavigationContainer>
+          </BottomSheetModalProvider>
+        </PortalProvider>
+      </GestureHandlerRootView>
+    </Provider>
+  );
+};
 
 export default App;

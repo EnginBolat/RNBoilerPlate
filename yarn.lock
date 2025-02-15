@@ -2887,6 +2887,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-native-background-timer@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "@types/react-native-background-timer@npm:2.0.2"
+  checksum: b463cc1c33d50af5cc3b81a98f10315188b044f6de8e13733da9bfe0b16018ab5e8b680aae6305cff06c4cffb66f89b59782499fc1e90d42591c8324319afaa7
+  languageName: node
+  linkType: hard
+
 "@types/react-native-i18n@npm:^2.0.2":
   version: 2.0.3
   resolution: "@types/react-native-i18n@npm:2.0.3"
@@ -3172,6 +3179,7 @@ __metadata:
     "@reduxjs/toolkit": ^2.5.0
     "@types/jest": ^29.5.13
     "@types/react": ^18.2.6
+    "@types/react-native-background-timer": ^2.0.2
     "@types/react-native-i18n": ^2.0.2
     "@types/react-test-renderer": ^18.0.0
     axios: ^1.7.9
@@ -3183,6 +3191,7 @@ __metadata:
     prettier: 2.8.8
     react: 18.3.1
     react-native: 0.77.1
+    react-native-background-timer: ^2.4.1
     react-native-gesture-handler: ^2.23.0
     react-native-i18n: ^2.0.15
     react-native-reanimated: ^3.16.7
@@ -8518,6 +8527,15 @@ __metadata:
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 9d6d111d8990dc98bc5402c1266a808b0459b5d54830bbea24c12d908b536df7883f268a7868cfaedde3dd9d4e0d574db456f84d2e6df9c4526f99bb4b5344d8
+  languageName: node
+  linkType: hard
+
+"react-native-background-timer@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "react-native-background-timer@npm:2.4.1"
+  peerDependencies:
+    react-native: ">=0.47.0"
+  checksum: 635feb23bfdc8c43b8ee85dc85a5eb83f85aa9c285ce92ac329946ac83864121ae66bfb64fefa21e2a10462d094e03c17ff87eeb5d7e6349bc8e72d941f12754
   languageName: node
   linkType: hard
 

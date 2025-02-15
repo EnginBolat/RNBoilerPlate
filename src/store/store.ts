@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch as useReduxDispatch, useSelector } from 'react-redux';
 
-import {exampleCounterSlice} from './slice';
+import {exampleCounterSlice, globalSlice} from './slice';
 
 export const store = configureStore({
   reducer: {
     counter: exampleCounterSlice,
+    global: globalSlice,
   },
 });
 
