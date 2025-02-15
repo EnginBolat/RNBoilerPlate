@@ -16,7 +16,7 @@ const Button = (props: IButton) => {
       disabled={disabled}
       style={buttonContainerStyle}>
       {loading ? (
-        <ActivityIndicator />
+        <ActivityIndicator testID="loading-indicator"/>
       ) : (
         <Text style={buttonTitleStyle}>{title}</Text>
       )}
