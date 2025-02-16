@@ -28,6 +28,7 @@ export const en = {
     home:{
       updateLanguageAs: 'Change language to {0}',
       showSheet: 'Show Sheet',
+      searchTerm: 'Search Term',
     },
   },
 };

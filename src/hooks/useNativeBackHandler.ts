@@ -7,7 +7,7 @@ import {BackHandler} from 'react-native';
  * @param handler A callback function that executes when the back button is pressed.
  * @param dependencies An array of dependencies that will trigger the effect when changed.
  */
-export const useBackHandler = (handler: () => void, dependencies: any[] = []) => {
+const useBackHandler = (handler: () => void, dependencies: any[] = []) => {
   useEffect(() => {
     const backAction = () => {
       if (handler) {

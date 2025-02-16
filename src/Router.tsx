@@ -8,7 +8,7 @@ import {
 } from '@store/index';
 import {UserInactivityProvider} from '@providers/index';
 import {InactivitySheet} from '@components/index';
-import { TIME_FOR_INACTIVITY } from '@constants/AppConstants';
+import AppConstants from '@constants/AppConstants';
 
 const Router = () => {
   const dispatch = useAppDispatch();
@@ -30,7 +30,7 @@ const Router = () => {
     <>
       <UserInactivityProvider
         isLogin={true}
-        timeForInactivity={TIME_FOR_INACTIVITY}
+        timeForInactivity={AppConstants.TIME_FOR_INACTIVITY}
         onInactivityTimeout={onInactivityTimeout}>
         <MainNavigationStack />
       </UserInactivityProvider>

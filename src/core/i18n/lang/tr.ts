@@ -28,6 +28,7 @@ export const tr = {
     home:{
       updateLanguageAs: 'Dili {0} olarak güncelle',
       showSheet: 'Sheet Göster',
+      searchTerm: 'Arama Terimi',
     },
   },
 };

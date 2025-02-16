@@ -1,3 +1,5 @@
-const TIME_FOR_INACTIVITY = 100;
+const AppConstants = {
+  TIME_FOR_INACTIVITY: 15000,
+};
 
-export {TIME_FOR_INACTIVITY};
+export default AppConstants;
