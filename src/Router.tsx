@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import MainNavigationStack from '@stacks/MainNavigationStack';
 import {
@@ -9,21 +9,27 @@ import {
 import {UserInactivityProvider} from '@providers/index';
 import {InactivitySheet} from '@components/index';
 import AppConstants from '@constants/AppConstants';
+import {Keyboard} from 'react-native';
+import BottomSheet from '@gorhom/bottom-sheet';
 
 const Router = () => {
   const dispatch = useAppDispatch();
+  const inacitivitySheetRef = useRef<BottomSheet>(null);
   const inactivitySheetVisible = useAppSelector(
     state => state.global.inactivitySheetVisible,
   );
 
   const onInactivityTimeout = () => {
-    console.log('User Inactive');
+    console.info('User Inactive');
+
+    Keyboard.dismiss();
     dispatch(setInacitivitySheet(!inactivitySheetVisible));
   };
 
   const handleInacivitySheetOnPress = () => {
-    console.log('User Active');
-    dispatch(setInacitivitySheet(!inactivitySheetVisible));
+    console.info('User Active');
+    inacitivitySheetRef.current?.close();
+    setTimeout(() => dispatch(setInacitivitySheet(!inactivitySheetVisible)), 300);
   };
 
   return (
@@ -35,7 +41,7 @@ const Router = () => {
         <MainNavigationStack />
       </UserInactivityProvider>
       {inactivitySheetVisible && (
-        <InactivitySheet onPress={handleInacivitySheetOnPress} />
+        <InactivitySheet ref={inacitivitySheetRef} onPress={handleInacivitySheetOnPress} />
       )}
     </>
   );

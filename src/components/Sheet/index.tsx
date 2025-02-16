@@ -1,4 +1,10 @@
-import React, {useCallback, useImperativeHandle, useRef, useState} from 'react';
+import React, {
+  forwardRef,
+  useCallback,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
 import {
   Dimensions,
   LayoutChangeEvent,
@@ -16,7 +22,7 @@ import {rawStyles} from './styles';
 
 const {height: screenHeight} = Dimensions.get('window');
 
-const Sheet = (props: ISheet) => {
+const Sheet = forwardRef<BottomSheet, ISheet>((props, outRef) => {
   const {
     dynamicSizing = true,
     panDownToClose = true,
@@ -47,7 +53,7 @@ const Sheet = (props: ISheet) => {
     [isHaveMaxHeight],
   );
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(outRef, () => ({
     close: handleTouchClose,
     snapPoints: height ? [height] : ['30%'],
     snapToIndex: (index: number) => ref.current?.snapToIndex(index),
@@ -56,12 +62,15 @@ const Sheet = (props: ISheet) => {
     expand: () => ref.current?.expand(),
     collapse: () => ref.current?.collapse(),
     forceClose: () => ref.current?.forceClose(),
+    ...ref.current,
   }));
 
   const handleTouchClose = () => {
     if (onTouchClose && onClose) {
       ref.current?.close();
+      return;
     }
+    ref.current?.close();
   };
 
   const sheetViewStyle: ViewStyle = {...sheetStyle};
@@ -77,7 +86,7 @@ const Sheet = (props: ISheet) => {
 
   return (
     <Portal>
-      <TouchableWithoutFeedback onPress={handleTouchClose}>
+      <TouchableWithoutFeedback onPress={handleTouchClose} disabled={onTouchClose}>
         <View style={styles.overlay} />
       </TouchableWithoutFeedback>
       <BottomSheet
@@ -100,6 +109,6 @@ const Sheet = (props: ISheet) => {
       <PortalHost name={portalName} />
     </Portal>
   );
-};
+});
 
 export default Sheet;
