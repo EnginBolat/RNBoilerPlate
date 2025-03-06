@@ -35,7 +35,7 @@ const Router = () => {
   return (
     <>
       <UserInactivityProvider
-        isLogin={true}
+        isLogin={false}
         timeForInactivity={AppConstants.TIME_FOR_INACTIVITY}
         onInactivityTimeout={onInactivityTimeout}>
         <MainNavigationStack />

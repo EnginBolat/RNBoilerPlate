@@ -79,14 +79,18 @@ const Sheet = forwardRef<BottomSheet, ISheet>((props, outRef) => {
     ...containerStyle,
   };
   const sheetContentContainerSt: ViewStyle = {
-    ...sheetContentContainerStyle,
-    ...styles.sheetView,
     marginBottom: safeAreaInsets?.bottom,
+    ...styles.sheetView,
+    ...sheetContentContainerStyle,
   };
+
+  console.log({sheetContentContainerSt});
 
   return (
     <Portal>
-      <TouchableWithoutFeedback onPress={handleTouchClose} disabled={onTouchClose}>
+      <TouchableWithoutFeedback
+        onPress={handleTouchClose}
+        disabled={onTouchClose}>
         <View style={styles.overlay} />
       </TouchableWithoutFeedback>
       <BottomSheet

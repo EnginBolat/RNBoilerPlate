@@ -18,9 +18,9 @@ export const rawStyles = ({bottomInsets}: {bottomInsets: number}) =>
       backgroundColor: 'rgba(0, 0, 0, 0.3)',
     },
     sheetView: {
-      paddingHorizontal: 20,
+      // paddingHorizontal: 20,
       paddingVertical: 32,
-      alignItems: 'center',
-      justifyContent: 'center',
+      // alignItems: 'center',
+      // justifyContent: 'center',
     },
   });
