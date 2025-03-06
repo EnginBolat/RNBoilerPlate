@@ -1,27 +1,25 @@
-import React, {useEffect, useState} from 'react';
-import {Button, SafeAreaView, Text, View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Button, SafeAreaView, Text, View } from 'react-native';
 
-import {useBackHandler, useDebounce, useOrientation} from '@hooks/index';
-import {useLocalization} from '@providers/index';
-import {TextInput} from '@components/index';
+import { useBackHandler, useDebounce, useOrientation } from '@hooks/index';
+import { useLocalization } from '@providers/index';
+import { TextInput } from '@components/index';
 
-import {styles} from './styles';
-import {WelcomeSheet} from './components';
+import { styles } from './styles';
+import { WelcomeSheet } from './components';
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [welcomeSheetVisible, setWelcomeSheetVisible] = useState(false);
 
   const debounceSearchTerm = useDebounce(searchTerm, 500);
-  const {orientation} = useOrientation();
+  const { orientation } = useOrientation();
 
   useEffect(() => {
-    if (debounceSearchTerm) {
-      console.log('Arama yapılıyor: ', debounceSearchTerm);
-    }
+    if (debounceSearchTerm) console.log('Arama yapılıyor: ', debounceSearchTerm);
   }, [debounceSearchTerm]);
 
-  const {translate, locale, setLocale} = useLocalization();
+  const { translate, locale, setLocale } = useLocalization();
   useBackHandler(() => console.log('Geri tuşuna basıldı!'), []);
 
   const isEnglish = locale === 'en';
@@ -41,15 +39,9 @@ const Home = () => {
           placeholderTextColor={'rgba(0,0,0,0.2)'}
           placeholder={translate('app.home.searchTerm')}
         />
+        <Button title={translate('app.home.showSheet')} onPress={handleSheetVisible} />
         <Button
-          title={translate('app.home.showSheet')}
-          onPress={handleSheetVisible}
-        />
-        <Button
-          title={translate(
-            'app.home.updateLanguageAs',
-            isEnglish ? 'app.languages.turkish' : 'app.languages.english',
-          )}
+          title={translate('app.home.updateLanguageAs', isEnglish ? 'app.languages.turkish' : 'app.languages.english')}
           onPress={handleChangeLanguage}
         />
         {welcomeSheetVisible && <WelcomeSheet onClose={handleSheetVisible} />}
