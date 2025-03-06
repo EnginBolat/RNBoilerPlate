@@ -29,6 +29,7 @@ export const en = {
       updateLanguageAs: 'Change language to {0}',
       showSheet: 'Show Sheet',
       searchTerm: 'Search Term',
+      deviceOrientation:'Device Orientation',
     },
   },
 };

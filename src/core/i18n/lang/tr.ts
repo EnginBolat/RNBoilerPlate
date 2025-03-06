@@ -29,6 +29,7 @@ export const tr = {
       updateLanguageAs: 'Dili {0} olarak güncelle',
       showSheet: 'Sheet Göster',
       searchTerm: 'Arama Terimi',
+      deviceOrientation:'Cihaz yönü',
     },
   },
 };
