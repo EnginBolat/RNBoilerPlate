@@ -12,15 +12,11 @@ const useOrientation = () => {
     const [orientation, setOrientation] = useState<OrientationType>(getOrientation());
 
     useEffect(() => {
-        const handleChange = ({ window }: { window: ScaledSize; }) => {
-            setOrientation(window.width > window.height ? 'horizontal' : 'vertical');
-        };
-
+        const handleChange = ({ window }: { window: ScaledSize }) => setOrientation(window.width > window.height ? 'horizontal' : 'vertical');
         const subscription = Dimensions.addEventListener('change', handleChange);
 
-        return () => { subscription.remove(); };
+        return () => subscription.remove();
     }, []);
-
 
     return {
         orientation,
