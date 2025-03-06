@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Text, View} from 'react-native';
+import {Button, SafeAreaView, Text, View} from 'react-native';
 
-import {useBackHandler, useDebounce} from '@hooks/index';
+import {useBackHandler, useDebounce, useOrientation} from '@hooks/index';
 import {useLocalization} from '@providers/index';
-import { TextInput } from '@components/index';
+import {TextInput} from '@components/index';
 
 import {styles} from './styles';
 import {WelcomeSheet} from './components';
@@ -13,6 +13,7 @@ const Home = () => {
   const [welcomeSheetVisible, setWelcomeSheetVisible] = useState(false);
 
   const debounceSearchTerm = useDebounce(searchTerm, 500);
+  const {orientation} = useOrientation();
 
   useEffect(() => {
     if (debounceSearchTerm) {
@@ -28,27 +29,32 @@ const Home = () => {
   const handleChangeLanguage = () => setLocale(isEnglish ? 'tr' : 'en');
 
   return (
-    <View style={styles.container}>
-      <Text>{translate('app.greeting')}</Text>
-      <TextInput
-        value={searchTerm}
-        onChangeText={setSearchTerm}
-        placeholderTextColor={'rgba(0,0,0,0.2)'}
-        placeholder={translate('app.home.searchTerm')}
-      />
-      <Button
-        title={translate('app.home.showSheet')}
-        onPress={handleSheetVisible}
-      />
-      <Button
-        title={translate(
-          'app.home.updateLanguageAs',
-          isEnglish ? 'app.languages.turkish' : 'app.languages.english',
-        )}
-        onPress={handleChangeLanguage}
-      />
-      {welcomeSheetVisible && <WelcomeSheet onClose={handleSheetVisible} />}
-    </View>
+    <SafeAreaView style={styles.bgWhite}>
+      <View style={[styles.container, styles.bgWhite]}>
+        <Text>{translate('app.greeting')}</Text>
+        <Text>
+          {translate('app.home.deviceOrientation')}: {orientation}
+        </Text>
+        <TextInput
+          value={searchTerm}
+          onChangeText={setSearchTerm}
+          placeholderTextColor={'rgba(0,0,0,0.2)'}
+          placeholder={translate('app.home.searchTerm')}
+        />
+        <Button
+          title={translate('app.home.showSheet')}
+          onPress={handleSheetVisible}
+        />
+        <Button
+          title={translate(
+            'app.home.updateLanguageAs',
+            isEnglish ? 'app.languages.turkish' : 'app.languages.english',
+          )}
+          onPress={handleChangeLanguage}
+        />
+        {welcomeSheetVisible && <WelcomeSheet onClose={handleSheetVisible} />}
+      </View>
+    </SafeAreaView>
   );
 };
 
