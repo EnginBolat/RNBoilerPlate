@@ -9,7 +9,8 @@
     "pods": "cd ios && pod install",
     "clean": "cd scripts && bash clean.sh",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^5",
@@ -22,6 +23,8 @@
     "@testing-library/react-native": "^13.0.1",
     "@types/react-native-background-timer": "^2.0.2",
     "axios": "^1.7.9",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "react": "18.3.1",
     "react-native": "0.77.1",
     "react-native-background-timer": "^2.4.1",
